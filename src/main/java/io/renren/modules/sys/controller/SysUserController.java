@@ -112,7 +112,7 @@ public class SysUserController extends AbstractController {
 		ValidatorUtils.validateEntity(user, AddGroup.class);
 		Long userid = user.getUserId();
 		if (userid == null) {
-			user.setUserId(Long.valueOf(System.currentTimeMillis()));
+			user.setUserId( sysUserService.queryByUserMaxId() + 1);
 		}
 		user.setCreateUserId(getUserId());
 		sysUserService.save(user);

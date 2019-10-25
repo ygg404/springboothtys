@@ -21,4 +21,12 @@
 		select * from sys_user where username = #{username}
 	</select>
 
+	<select id="queryByUserAccount" resultType="io.renren.modules.sys.entity.SysUserEntity">
+		select * from sys_user where useraccount = #{useraccount}
+	</select>
+
+	<select id="queryByUserMaxId" resultType="long">
+		SELECT MAX(user_id) FROM sys_user
+	</select>
+
 </mapper>

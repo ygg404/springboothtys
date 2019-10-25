@@ -23,17 +23,17 @@ package io.renren.modules.sys.form;
  * @since 2.0.0 2018-01-25
  */
 public class SysLoginForm {
-    private String username;
+    private String useraccount;
     private String password;
     private String captcha;
     private String uuid;
 
-    public String getUsername() {
-        return username;
+    public String getUseraccount() {
+        return useraccount;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUseraccount(String useraccount) {
+        this.useraccount = useraccount;
     }
 
     public String getPassword() {

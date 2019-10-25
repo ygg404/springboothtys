@@ -67,6 +67,16 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> i
 	}
 
 	@Override
+	public SysUserEntity queryByUserAccount(String useraccount) {
+		return baseMapper.queryByUserAccount(useraccount);
+	}
+
+	@Override
+	public Long queryByUserMaxId() {
+		return baseMapper.queryByUserMaxId();
+	}
+
+	@Override
 	@Transactional
 	public void save(SysUserEntity user) {
 		user.setCreateTime(new Date());

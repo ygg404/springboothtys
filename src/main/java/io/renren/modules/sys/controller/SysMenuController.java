@@ -4,6 +4,7 @@ package io.renren.modules.sys.controller;
 import java.util.List;
 import java.util.Set;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,8 +53,9 @@ public class SysMenuController extends AbstractController {
 	@GetMapping("/list")
 //	@RequiresPermissions("sys:menu:list")
 	public List<SysMenuEntity> list() {
-		List<SysMenuEntity> menuList = sysMenuService.selectList(null);
+		List<SysMenuEntity> menuList = sysMenuService.selectList(new EntityWrapper<SysMenuEntity>().orderBy("orderNum" , true));
 		for (SysMenuEntity sysMenuEntity : menuList) {
+//			sysMenuEntity.setOpen(true);
 			SysMenuEntity parentMenuEntity = sysMenuService.selectById(sysMenuEntity.getParentId());
 			if (parentMenuEntity != null) {
 				sysMenuEntity.setParentName(parentMenuEntity.getName());
@@ -130,9 +132,9 @@ public class SysMenuController extends AbstractController {
 	@PostMapping("/delete/{menuId}")
 //	@RequiresPermissions("sys:menu:delete")
 	public R delete(@PathVariable("menuId") long menuId) {
-		if (menuId <= 31) {
-			return R.error("系统菜单，不能删除");
-		}
+//		if (menuId <= 31) {
+//			return R.error("系统菜单，不能删除");
+//		}
 
 		// 判断是否有子菜单或按钮
 		List<SysMenuEntity> menuList = sysMenuService.queryListParentId(menuId);

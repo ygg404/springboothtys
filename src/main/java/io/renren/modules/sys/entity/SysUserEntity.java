@@ -32,6 +32,12 @@ public class SysUserEntity implements Serializable {
 	private Long userId;
 
 	/**
+	 * 用户账号
+	 */
+	@NotBlank(message = "登录账号不能为空", groups = { AddGroup.class, UpdateGroup.class })
+	private String useraccount;
+
+	/**
 	 * 用户名
 	 */
 	@NotBlank(message = "用户名不能为空", groups = { AddGroup.class, UpdateGroup.class })
@@ -47,18 +53,6 @@ public class SysUserEntity implements Serializable {
 	 * 盐
 	 */
 	private String salt;
-
-	/**
-	 * 邮箱
-	 */
-	@NotBlank(message = "邮箱不能为空", groups = { AddGroup.class, UpdateGroup.class })
-	@Email(message = "邮箱格式不正确", groups = { AddGroup.class, UpdateGroup.class })
-	private String email;
-
-	/**
-	 * 手机号
-	 */
-	private String mobile;
 
 	/**
 	 * 状态 0：禁用 1：正常
@@ -100,8 +94,26 @@ public class SysUserEntity implements Serializable {
 	}
 
 	/**
-	 * 设置：用户名
+	 * 设置：账号
 	 * 
+	 * @param useraccount 账号
+	 */
+	public void setUseraccount(String useraccount) {
+		this.useraccount = useraccount;
+	}
+
+	/**
+	 * 获取：用户名
+	 * 
+	 * @return String
+	 */
+	public String getUseraccount() {
+		return useraccount;
+	}
+
+	/**
+	 * 设置：用户名
+	 *
 	 * @param username 用户名
 	 */
 	public void setUsername(String username) {
@@ -110,7 +122,7 @@ public class SysUserEntity implements Serializable {
 
 	/**
 	 * 获取：用户名
-	 * 
+	 *
 	 * @return String
 	 */
 	public String getUsername() {
@@ -133,42 +145,6 @@ public class SysUserEntity implements Serializable {
 	 */
 	public String getPassword() {
 		return password;
-	}
-
-	/**
-	 * 设置：邮箱
-	 * 
-	 * @param email 邮箱
-	 */
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	/**
-	 * 获取：邮箱
-	 * 
-	 * @return String
-	 */
-	public String getEmail() {
-		return email;
-	}
-
-	/**
-	 * 设置：手机号
-	 * 
-	 * @param mobile 手机号
-	 */
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
-	}
-
-	/**
-	 * 获取：手机号
-	 * 
-	 * @return String
-	 */
-	public String getMobile() {
-		return mobile;
 	}
 
 	/**

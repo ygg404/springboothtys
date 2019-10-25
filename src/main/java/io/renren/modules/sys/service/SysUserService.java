@@ -36,6 +36,17 @@ public interface SysUserService extends IService<SysUserEntity> {
 	SysUserEntity queryByUserName(String username);
 
 	/**
+	 * 根据用户账号，查询系统用户
+	 */
+	SysUserEntity queryByUserAccount(String useraccount);
+
+	/**
+	 * 获取最大用户ID
+	 * @return
+	 */
+	Long queryByUserMaxId();
+
+	/**
 	 * 保存用户
 	 */
 	void save(SysUserEntity user);
